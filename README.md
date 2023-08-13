@@ -1,1 +1,1 @@
-# my-store
+# Ecommerce Store
