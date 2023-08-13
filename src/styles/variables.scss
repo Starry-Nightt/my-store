@@ -1,0 +1,60 @@
+@import '../../node_modules/@angular/material/theming';
+
+$primary-color-100: #b2dfdb;
+$primary-color-200: #80cbc4;
+$primary-color-400: #26a69a;
+$primary-color-500: #009688;
+$primary-color-700:#00695c;
+
+$accent-color-100: #f0f4c3;
+$accent-color-200: #e6ee9c;
+$accent-color-400: #d4e157;
+$accent-color-500: #cddc39;
+$accent-color-700: #afb42b;
+
+// Semantic Color
+$success-color-700: #378f43;
+$success-color-500: #4caf4e;
+$success-color-400: #66bb6a;
+$success-color-200: #a5d5a7;
+$success-color-100: #c8e5c9;
+
+$info-color-700: #1b87c9;
+$info-color-500: #38a4dd;
+$info-color-400: #44b3e6;
+$info-color-200: #84d2f6;
+$info-color-100: #b5e4fa;
+
+$warn-color-700: #f9bf2c;
+$warn-color-500: #feea3a;
+$warn-color-400: #feed58;
+$warn-color-200: #fef5a0;
+$warn-color-100: #fef9c5;
+
+$danger-color-700: #d32e2e;
+$danger-color-500: #ef4438;
+$danger-color-400: #ef5451;
+$danger-color-200: #ef9a9b;
+$danger-color-100: #facdd2;
+
+// Neutral color
+$neutral-color-900: #1e1e1e;
+$neutral-color-800: #343436;
+$neutral-color-700: #505052;
+$neutral-color-600: #7c7c7e;
+$neutral-color-500: #9b9b9e;
+$neutral-color-400: #bdbdbf;
+$neutral-color-300: #d4d4d6;
+$neutral-color-200: #e6e6e8;
+$neutral-color-100: #eff0f2;
+$neutral-color-50: #f6f7f9;
+
+$primary-color: $primary-color-700;
+$accent-color: $accent-color-500;
+$white-color: $neutral-color-50;
+$black-color: $neutral-color-900;
+$dim-color: $neutral-color-500;
+$success-color: $success-color-500;
+$info-color: $info-color-500;
+$warn-color: $warn-color-500;
+$danger-color: $danger-color-500;

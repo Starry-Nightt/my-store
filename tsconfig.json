@@ -19,10 +19,33 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"],
+    "paths": {
+      // "@utils": ["src/app/shared/utils"],
+      // "@utils/*": ["src/app/shared/utils/*"],
+      "@models": ["src/app/shared/models"],
+      "@models/*": ["src/app/shared/models/*"],
+      "@components": ["src/app/shared/components"],
+      "@components/*": ["src/app/shared/components/*"],
+      // "@constants": ["src/app/shared/constants"],
+      // "@constants/*": ["src/app/shared/constants/*"],
+      // "@interfaces": ["src/app/shared/interfaces"],
+      // "@interfaces/*": ["src/app/shared/interfaces/*"],
+      "@repositories": ["src/app/repositories"],
+      "@repositories/*": ["src/app/repositories/*"],
+      "@shared": ["src/app/shared"],
+      "@shared/*": ["src/app/shared/*"],
+      // "@services": ["src/app/core/services"],
+      // "@services/*": ["src/app/core/services/*"],
+      // "@bases": ["src/app/core/bases"],
+      // "@bases/*": ["src/app/core/bases/*"],
+      // "@guards": ["src/app/core/guards"],
+      // "@guards/*": ["src/app/core/guards/*"],
+      // "@interceptors": ["src/app/core/interceptors"],
+      // "@interceptors/*": ["src/app/core/interceptors/*"],
+      "@layouts": ["src/app/layouts"],
+      "@layouts/*": ["src/app/layouts/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
