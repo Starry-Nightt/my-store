@@ -1,3 +1,5 @@
+@import 'variables';
+
 * {
     margin: 0;
     padding: 0;
@@ -19,6 +21,22 @@
   flex-direction: column;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
+.item-center {
+  align-items: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.item-end {
+  align-items: flex-end;
+}
+
 .block {
   display: block;
 }
@@ -29,6 +47,10 @@
 
 .text_center {
   text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .relative {
@@ -55,6 +77,66 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.mx-auto {
+  margin: 0 auto;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.thin {
+  font-weight: 300;
+}
+
+.normal {
+  font-weight: 500;
+}
+
+.semibold {
+  font-weight: 600;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.text-dim {
+  color: $dim-color;
+}
+
+.text-success {
+  color: $success-color;
+}
+
+.text-warn {
+  color: $warn-color;
+}
+
+.text-danger {
+  color: $danger-color;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-accent {
+  color: $accent-color;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.half-width {
+  width: 50%;
 }
 
 $space_amounts: (1,2,3,4,5);
@@ -107,3 +189,13 @@ $space_amounts: (1,2,3,4,5);
         padding-bottom: #{$space}rem;
     }
 }
+
+$widths: (1,2,3,4,5,6,7,8,9,10);
+
+@each $width in $widths {
+  .w-#{$width}{
+    width: 100%;
+    max-width: #{50 * $width}px;
+  }
+}
+

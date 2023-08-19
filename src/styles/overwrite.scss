@@ -1,2 +1,19 @@
-@import 'variables.scss';
+@import "variables.scss";
 
+mat-form-field {
+
+  .mat-mdc-form-field-infix {
+    
+  }
+
+  mat-error {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: normal;
+    color: $danger-color;
+  }
+
+  .mat-mdc-form-field-error-wrapper {
+    padding: 1px 2px;
+  }
+}
