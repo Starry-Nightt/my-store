@@ -1,0 +1,21 @@
+@import "variables";
+
+.header {
+  background-color: $primary-color-400;
+  padding: 0.2rem 0;
+  .brand {
+    height: 100%;
+    cursor: pointer;
+    img {
+      display: block;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .q {
+  }
+
+  .cart {
+  }
+}

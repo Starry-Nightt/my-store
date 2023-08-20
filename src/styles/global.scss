@@ -1,24 +1,54 @@
-@import 'variables';
+@import "variables";
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+.min-100vh {
+  min-height: 100vh;
+}
+
 .container {
   width: 100%;
-  max-width: 1200px;
-  padding: 0 5rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+      padding: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .container {
+    max-width: 1200px;
+  }
 }
 
 .flex {
   display: flex;
 }
 
-.flex_col {
+.flex-col {
   display: flex;
   flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
 }
 
 .justify-center {
@@ -41,11 +71,11 @@
   display: block;
 }
 
-.inline_block {
+.inline-block {
   display: inline-block;
 }
 
-.text_center {
+.text-center {
   text-align: center;
 }
 
@@ -65,11 +95,11 @@
   display: none;
 }
 
-.outline_none {
+.outline-none {
   outline: none;
 }
 
-.border_none {
+.border-none {
   border: none;
 }
 
@@ -107,30 +137,6 @@
   font-weight: 700;
 }
 
-.text-dim {
-  color: $dim-color;
-}
-
-.text-success {
-  color: $success-color;
-}
-
-.text-warn {
-  color: $warn-color;
-}
-
-.text-danger {
-  color: $danger-color;
-}
-
-.text-primary {
-  color: $primary-color;
-}
-
-.text-accent {
-  color: $accent-color;
-}
-
 .full-width {
   width: 100%;
 }
@@ -139,63 +145,85 @@
   width: 50%;
 }
 
-$space_amounts: (1,2,3,4,5);
-
-@each $space in $space_amounts {
-    .m-#{$space}{
-        margin: #{$space}rem;
-    }
-    .mt-#{$space}{
-        margin-top: #{$space}rem;
-    }
-    .mr-#{$space}{
-        margin-right: #{$space}rem;
-    }
-    .mb-#{$space}{
-        margin-bottom: #{$space}rem;
-    }
-    .ml-#{$space}{
-        margin-left: #{$space}rem;
-    }
-    .mx-#{$space}{
-        margin-left: #{$space}rem;
-        margin-right: #{$space}rem;
-    }
-    .my-#{$space}{
-        margin-top: #{$space}rem;
-        margin-bottom: #{$space}rem;
-    }
-    .p-#{$space}{
-        padding: #{$space}rem;
-    }
-    .pt-#{$space}{
-        padding-top: #{$space}rem;
-    }
-    .pr-#{$space}{
-        padding-right: #{$space}rem;
-    }
-    .pb-#{$space}{
-        padding-bottom: #{$space}rem;
-    }
-    .pl-#{$space}{
-        padding-left: #{$space}rem;
-    }
-    .px-#{$space}{
-        padding-left: #{$space}rem;
-        padding-right: #{$space}rem;
-    }
-    .py-#{$space}{
-        padding-top: #{$space}rem;
-        padding-bottom: #{$space}rem;
-    }
+.full-height {
+  height: 100%;
 }
 
-$widths: (1,2,3,4,5,6,7,8,9,10);
+$space-amounts: (1, 2, 3, 4, 5);
+
+@each $space in $space-amounts {
+  .m-#{$space} {
+    margin: #{$space}rem;
+  }
+  .mt-#{$space} {
+    margin-top: #{$space}rem;
+  }
+  .mr-#{$space} {
+    margin-right: #{$space}rem;
+  }
+  .mb-#{$space} {
+    margin-bottom: #{$space}rem;
+  }
+  .ml-#{$space} {
+    margin-left: #{$space}rem;
+  }
+  .mx-#{$space} {
+    margin-left: #{$space}rem;
+    margin-right: #{$space}rem;
+  }
+  .my-#{$space} {
+    margin-top: #{$space}rem;
+    margin-bottom: #{$space}rem;
+  }
+  .p-#{$space} {
+    padding: #{$space}rem;
+  }
+  .pt-#{$space} {
+    padding-top: #{$space}rem;
+  }
+  .pr-#{$space} {
+    padding-right: #{$space}rem;
+  }
+  .pb-#{$space} {
+    padding-bottom: #{$space}rem;
+  }
+  .pl-#{$space} {
+    padding-left: #{$space}rem;
+  }
+  .px-#{$space} {
+    padding-left: #{$space}rem;
+    padding-right: #{$space}rem;
+  }
+  .py-#{$space} {
+    padding-top: #{$space}rem;
+    padding-bottom: #{$space}rem;
+  }
+}
+
+$widths: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
 @each $width in $widths {
-  .w-#{$width}{
+  .w-#{$width} {
     width: 100%;
     max-width: #{50 * $width}px;
   }
 }
 
+$colors: (
+  "primary": $primary-color,
+  "accent": $accent-color,
+  "success": $success-color,
+  "warn": $warn-color,
+  "danger": $danger-color,
+  "dim": $dim-color,
+  "white": $white-color,
+);
+
+@each $color, $value in $colors {
+  .text-#{$color} {
+    color: #{$value};
+  }
+  .bg-#{$color} {
+    background-color: #{$value};
+  }
+}

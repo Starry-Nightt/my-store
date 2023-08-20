@@ -1,3 +1,4 @@
+import { LayoutsModule } from './layouts/layouts.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -13,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    LayoutsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

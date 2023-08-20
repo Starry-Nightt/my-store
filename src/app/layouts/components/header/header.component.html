@@ -1,0 +1,17 @@
+<mat-toolbar class="header">
+  <div class="container">
+    <mat-toolbar-row>
+      <div class="brand">
+        <a routerLink="/">
+          <img src="../../../../assets/images/logo.png" alt="logo" />
+        </a>
+      </div>
+      <div class="q">
+        <ng-content select="q"></ng-content>
+      </div>
+      <div class="cart">
+        <ng-content select="cart"></ng-content>
+      </div>
+    </mat-toolbar-row>
+  </div>
+</mat-toolbar>
