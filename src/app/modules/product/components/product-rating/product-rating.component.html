@@ -1,0 +1,13 @@
+<div class="rating">
+  <div *ngFor="let item of stars">
+    <ng-container
+      [ngTemplateOutlet]="star"
+      [ngTemplateOutletContext]="{ rated: item }"
+    ></ng-container>
+  </div>
+  <ng-container></ng-container>
+</div>
+
+<ng-template #star let-rated="rated">
+  <mat-icon [class.rated]="rated" class="star">star</mat-icon>
+</ng-template>

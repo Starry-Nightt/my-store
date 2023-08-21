@@ -17,6 +17,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   exports: [
@@ -43,6 +44,7 @@ import { MatTreeModule } from '@angular/material/tree';
     MatIconModule,
     MatButtonModule,
     DragDropModule,
+    MatChipsModule,
   ],
 })
 export class MaterialModule {}

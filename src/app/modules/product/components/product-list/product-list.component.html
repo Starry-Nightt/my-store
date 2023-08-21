@@ -1,15 +1,12 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="w-6 mx-auto">
-  <h2 class="normal mb-1 text-primary">My Form</h2>
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Họ tên</mat-label>
-    <input matInput formControlName="name" />
-    <mat-error>
-      <span *ngIf="form.get('name')?.errors">
-        Trường thông tin chưa hợp lệ
-      </span>
-    </mat-error>
-  </mat-form-field>
-  <div class="flex justify-end">
-    <button mat-flat-button type="submit" color="primary">Submit</button>
+<section class="product-wrapper">
+  <div class="product-filter">
+    <h3>Filter</h3>
   </div>
-</form>
+  <app-infinite-list (scrolled)="onHandleScroll($event)" [hasMore]="hasMore">
+    <div class="product-list">
+      <div *ngFor="let product of products">
+        <app-product-item [product]="product"></app-product-item>
+      </div>
+    </div>
+  </app-infinite-list>
+</section>

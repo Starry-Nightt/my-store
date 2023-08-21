@@ -1,0 +1,43 @@
+<mat-card class="product">
+  <div class="product-discount">
+    <p class="text-danger number">{{ getDiscount() }}</p>
+    <p class="text-white">Giảm</p>
+  </div>
+  <img
+    mat-card-image
+    [src]="product?.thumbnail"
+    alt="thumbnail"
+    class="product-thumbnail"
+  />
+  <mat-card-content>
+    <h4 class="normal product-title">{{ product.title }}</h4>
+    <div class="flex">
+      <ng-container
+        [ngTemplateOutlet]="chip"
+        [ngTemplateOutletContext]="{ content: product?.brand }"
+      ></ng-container>
+      <ng-container
+        [ngTemplateOutlet]="chip"
+        [ngTemplateOutletContext]="{ content: product?.category }"
+      ></ng-container>
+    </div>
+    <div class="product-price text-primary">{{ product.price | currency }}</div>
+    <app-product-rating [rating]="product?.rating"></app-product-rating>
+    <span class="product-stock text-dim normal">{{ getStock() }}</span>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <!-- <button mat--button>
+      <span class="text-primary semibold">Thêm vào giỏ hàng</span>
+    </button> -->
+    <button mat-stroked-button color="primary">
+      Thêm vào<mat-icon>add_shopping_cart</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<ng-template #chip let-content="content">
+  <div class="product-chip">
+    <span *ngIf="content.length <= 14">{{ content }}</span>
+    <span *ngIf="content.length > 14">{{ content?.slice(0, 11) + "..." }}</span>
+  </div>
+</ng-template>

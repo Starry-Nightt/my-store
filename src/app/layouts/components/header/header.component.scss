@@ -1,11 +1,12 @@
 @import "variables";
 
 .header {
-  background-color: $primary-color-400;
+  background-image: linear-gradient(to bottom, $primary-color-600, $primary-color-400);
   padding: 0.2rem 0;
   .brand {
     height: 100%;
     cursor: pointer;
+    transform: translateY(-2px);
     img {
       display: block;
       height: 100%;
