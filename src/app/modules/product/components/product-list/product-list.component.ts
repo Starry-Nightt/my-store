@@ -17,8 +17,9 @@ export class ProductListComponent implements OnInit {
   limit: number = 20;
   hasMore = false;
   form = this.fb.group({
-    skip: [0, [Validators.required]],
-    limit: [this.limit, [Validators.required]],
+    q: ['a'],
+    skip: [0],
+    limit: [this.limit],
   });
 
   constructor(
@@ -37,13 +38,17 @@ export class ProductListComponent implements OnInit {
       .subscribe((res) => {
         this.products = [...this.products, ...res];
         this.hasMore = res.length > 0 ? true : false;
-        const skip = this.form.get('skip').value + res.length;
-        this.form.get('skip').setValue(skip);
+        const skip = this.skipCtrl.value + res.length;
+        this.skipCtrl.setValue(skip);
       });
   }
 
   onHandleScroll(event: boolean) {
     if (!event) return;
     this.getProducts();
+  }
+
+  get skipCtrl() {
+    return this.form.get('skip');
   }
 }

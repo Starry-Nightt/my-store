@@ -1,0 +1,26 @@
+@import "variables";
+
+.cart {
+  margin-right: 5%;
+  button {
+    display: block;
+    background-color: transparent;
+    color: $white-color;
+    width: 80px;
+    height: 50px;
+    outline: none;
+    border: none;
+    transition: 0.3s ease-out;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: $primary-color-500;
+    }
+
+    mat-icon {
+      font-size: 35px;
+      width: 35px;
+      height: 35px;
+    }
+  }
+}

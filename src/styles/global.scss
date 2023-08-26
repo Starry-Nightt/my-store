@@ -157,6 +157,14 @@ h6 {
   height: 100%;
 }
 
+.default {
+  cursor: default;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
 $space-amounts: (1, 2, 3, 4, 5);
 
 @each $space in $space-amounts {

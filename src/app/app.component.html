@@ -1,5 +1,8 @@
 <div class="min-100vh flex flex-col">
-  <app-header></app-header>
+  <app-header>
+    <app-search-bar ngProjectAs="q"></app-search-bar>
+    <app-cart ngProjectAs="cart"></app-cart>
+  </app-header>
   <app-main-layout>
     <router-outlet></router-outlet>
   </app-main-layout>

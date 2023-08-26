@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Product } from '@models/product.model';
 import { Observable } from 'rxjs';
@@ -17,10 +18,16 @@ export class ProductService {
   constructor(private http: AppHttpClientService) {}
 
   getAllProducts(params: any = {}): Observable<ProductListData> {
-    return this.http.get<ProductListData>('/products', params);
+    return this.http.get<ProductListData>('/products/search', params);
   }
 
   getProductById(id: number): Observable<Product> {
     return this.http.get<Product>(`/products/${id}`);
+  }
+
+  getAllCategories(): Observable<string[]> {
+    return this.http
+      .get<string[]>('/products/categories')
+      .pipe(map((res) => res.slice(0, 10)));
   }
 }

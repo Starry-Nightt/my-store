@@ -3,10 +3,16 @@
 .header {
   background-image: linear-gradient(to bottom, $primary-color-600, $primary-color-400);
   padding: 0.2rem 0;
+
+  mat-toolbar-row {
+    justify-content: space-between;
+  }
+
   .brand {
     height: 100%;
+    max-height: 60px;
     cursor: pointer;
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.2);
     img {
       display: block;
       height: 100%;
@@ -15,6 +21,7 @@
   }
 
   .q {
+    width: 60%;
   }
 
   .cart {

@@ -18,6 +18,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatRippleModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   exports: [
@@ -45,6 +47,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatButtonModule,
     DragDropModule,
     MatChipsModule,
+    MatRippleModule,
+    MatAutocompleteModule,
   ],
 })
 export class MaterialModule {}
