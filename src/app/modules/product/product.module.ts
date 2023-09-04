@@ -6,7 +6,6 @@ import { SharedModule } from '@shared/shared.module';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductRatingComponent } from './components/product-rating/product-rating.component';
-import { ProductFilterComponent } from './components/product-filter/product-filter.component';
 
 @NgModule({
   imports: [CommonModule, ProductRoutingModule, SharedModule],
@@ -15,7 +14,6 @@ import { ProductFilterComponent } from './components/product-filter/product-filt
     ProductListComponent,
     ProductItemComponent,
     ProductRatingComponent,
-    ProductFilterComponent,
   ],
 })
 export class ProductModule {}

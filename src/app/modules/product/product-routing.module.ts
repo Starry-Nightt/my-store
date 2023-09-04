@@ -12,10 +12,6 @@ const routes: Routes = [
         path: '',
         component: ProductListComponent,
       },
-      {
-        path: 'category/:slug',
-        component: ProductListComponent,
-      },
     ],
   },
 ];

@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
 import COMPONENTS from './components';
+import { DIRECTIVES } from './directives';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, ReactiveFormsModule],
-  declarations: [...COMPONENTS],
+  declarations: [...COMPONENTS, ...DIRECTIVES],
   exports: [CommonModule, MaterialModule, ReactiveFormsModule, ...COMPONENTS],
 })
 export class SharedModule {}
