@@ -1,4 +1,4 @@
-<div class="search-bar">
+<div class="search-bar" #searchbar>
   <input
     type="text"
     placeholder="Tìm kiếm sản phẩm"
@@ -9,6 +9,7 @@
   <mat-autocomplete
     #auto="matAutocomplete"
     [hideSingleSelectionIndicator]="true"
+    (optionSelected)="onSearch()"
   >
     <mat-option *ngFor="let hint of filteredHints | async" [value]="hint">
       {{ hint }}

@@ -1,9 +1,16 @@
 <div class="min-100vh flex flex-col">
-  <app-header>
-    <app-search-bar ngProjectAs="q"></app-search-bar>
-    <app-cart ngProjectAs="cart"></app-cart>
-  </app-header>
+  <div #head></div>
+  <app-header></app-header>
   <app-main-layout>
     <router-outlet></router-outlet>
   </app-main-layout>
+  <button
+    class="up-btn"
+    matRipple
+    [matRippleCentered]="true"
+    [class.show]="showButton"
+    #scrollTopButton
+  >
+    <mat-icon>arrow_upward</mat-icon>
+  </button>
 </div>

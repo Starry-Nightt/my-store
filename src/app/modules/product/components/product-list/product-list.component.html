@@ -1,9 +1,10 @@
 <section class="product-wrapper">
   <div class="product-filter">
-    <h3>Filter</h3>
+    <app-product-filter></app-product-filter>
   </div>
   <app-infinite-list (scrolled)="onHandleScroll($event)" [hasMore]="hasMore">
-    <div class="product-list">
+    <mat-spinner *ngIf="loading" class="mx-auto spinner"></mat-spinner>
+    <div class="product-list" *ngIf="!loading">
       <div *ngFor="let product of products">
         <app-product-item [product]="product"></app-product-item>
       </div>

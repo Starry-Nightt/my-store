@@ -59,6 +59,10 @@ h6 {
   justify-content: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .item-center {
   align-items: center;
 }
@@ -146,7 +150,7 @@ h6 {
 }
 
 .full-width {
-  width: 100%;
+  width: 100% !important;
 }
 
 .half-width {
@@ -163,6 +167,18 @@ h6 {
 
 .pointer {
   cursor: pointer;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 $space-amounts: (1, 2, 3, 4, 5);

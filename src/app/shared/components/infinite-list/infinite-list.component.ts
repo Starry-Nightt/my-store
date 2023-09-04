@@ -45,7 +45,7 @@ export class InfiniteListComponent implements OnInit, AfterViewInit, OnDestroy {
     const scrollHeight = this.container.nativeElement.scrollHeight;
     const scrollY = window.scrollY;
     const viewHeight = window.innerHeight;
-    if (scrollY + viewHeight >= 0.9 * scrollHeight && this.hasMore)
+    if (scrollY + viewHeight >= 0.8 * scrollHeight && this.hasMore)
       this.scrolled.emit(true);
     this.scrolled.emit(false);
   }

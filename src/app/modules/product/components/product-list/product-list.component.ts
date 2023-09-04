@@ -1,10 +1,9 @@
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '@models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ProductFilterPayload } from '../../product-interface';
 
 @Component({
   selector: 'app-product-list',
@@ -17,10 +16,10 @@ export class ProductListComponent implements OnInit {
   limit: number = 20;
   hasMore = false;
   form = this.fb.group({
-    q: ['a'],
     skip: [0],
     limit: [this.limit],
   });
+  allCategories: string[] = [];
 
   constructor(
     private productService: ProductService,
@@ -41,6 +40,12 @@ export class ProductListComponent implements OnInit {
         const skip = this.skipCtrl.value + res.length;
         this.skipCtrl.setValue(skip);
       });
+  }
+
+  getCategories() {
+    this.productService.getAllCategories().subscribe((res) => {
+      this.allCategories = res;
+    });
   }
 
   onHandleScroll(event: boolean) {

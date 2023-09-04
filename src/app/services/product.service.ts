@@ -1,8 +1,10 @@
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Product } from '@models/product.model';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { AppHttpClientService } from './app-http-client.service';
+import { ProductFilterPayload } from '../modules/product/product-interface';
+import { MAX_PRICE, MIN_PRICE } from '../modules/product/product.const';
 
 interface ProductListData {
   products: Product[];
@@ -15,10 +17,12 @@ interface ProductListData {
   providedIn: 'root',
 })
 export class ProductService {
+  searchKey$ = new BehaviorSubject<string>('');
+
   constructor(private http: AppHttpClientService) {}
 
   getAllProducts(params: any = {}): Observable<ProductListData> {
-    return this.http.get<ProductListData>('/products/search', params);
+    return this.http.get<ProductListData>('/products', params);
   }
 
   getProductById(id: number): Observable<Product> {
@@ -26,8 +30,6 @@ export class ProductService {
   }
 
   getAllCategories(): Observable<string[]> {
-    return this.http
-      .get<string[]>('/products/categories')
-      .pipe(map((res) => res.slice(0, 10)));
+    return this.http.get<string[]>('/products/categories');
   }
 }

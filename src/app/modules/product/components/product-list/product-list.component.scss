@@ -3,8 +3,8 @@
     grid-template-columns: 1fr 4fr;
     column-gap: 1.5rem;
 
-    .product-filter {
-        background-color: gold;
+    .spinner {
+        margin-top: 200px;
     }
 
     .product-list {
@@ -19,19 +19,21 @@
 
 @media screen and (max-width: 1400px) {
     .product-wrapper {
-        grid-template-columns: 1fr;
-        row-gap: 1rem;
-
+ 
         .product-list {
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
         }
     }
 }
 
 @media screen and (max-width: 992px) {
     .product-wrapper {
+        grid-template-columns: 1fr;
+        row-gap: 2rem;
         .product-list {
             grid-template-columns: repeat(3, 1fr);
+        }
+        .product-filter {
         }
     }
 }

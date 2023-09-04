@@ -20,7 +20,8 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatRippleModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSliderModule } from '@angular/material/slider';
 @NgModule({
   exports: [
     MatSlideToggleModule,
@@ -49,6 +50,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatChipsModule,
     MatRippleModule,
     MatAutocompleteModule,
+    MatProgressSpinnerModule,
+    MatSliderModule,
   ],
 })
 export class MaterialModule {}

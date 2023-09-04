@@ -1,7 +1,8 @@
 import { debounceTime, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -9,17 +10,15 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent implements OnInit {
-  hints: string[] = [
-    'Áo sơ mi nam',
-    'Khăn quàng mùa đông',
-    'Đồng hồ unisex',
-    'Quần âu nam nữ',
-  ];
+  hints: string[] = ['Mobile', 'Shirt', 'Watch', 'Men'];
   filteredHints: Observable<string[]>;
 
   searchCtrl = new FormControl('');
 
-  constructor() {}
+  @ViewChild('searchbar', { static: true })
+  searchBar: ElementRef<HTMLDivElement>;
+
+  constructor(private productService: ProductService) {}
 
   ngOnInit() {
     this.filteredHints = this.searchCtrl.valueChanges.pipe(
@@ -29,7 +28,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   onSearch() {
-    console.log(this.searchCtrl.value);
+    this.productService.searchKey$.next(this.searchCtrl.value);
   }
 
   private filterByKey(key: string) {
