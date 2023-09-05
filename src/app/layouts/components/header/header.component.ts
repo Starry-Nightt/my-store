@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '@models/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -7,25 +10,28 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  categories: string[] = [
-    'smartphones',
-    'laptops',
-    'fragrances',
-    'skincare',
-    'groceries',
-    'home-decoration',
-    'furniture',
-    'tops',
-    'womens-dresses',
-    'womens-shoes',
-    'mens-shirts',
-  ];
+  user: User;
+  // categories: string[] = [
+  //   'smartphones',
+  //   'laptops',
+  //   'fragrances',
+  //   'skincare',
+  //   'groceries',
+  //   'home-decoration',
+  //   'furniture',
+  //   'tops',
+  //   'womens-dresses',
+  //   'womens-shoes',
+  //   'mens-shirts',
+  // ];
 
-  constructor(private productService: ProductService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    // this.productService.getAllCategories().subscribe((res) => {
-    //   this.categories = res;
-    // });
+    this.user = this.authService.user;
+  }
+
+  login() {
+    this.router.navigate(['/login']);
   }
 }

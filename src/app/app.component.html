@@ -1,16 +1,10 @@
-<div class="min-100vh flex flex-col">
-  <div #head></div>
-  <app-header></app-header>
-  <app-main-layout>
-    <router-outlet></router-outlet>
-  </app-main-layout>
-  <button
-    class="up-btn"
-    matRipple
-    [matRippleCentered]="true"
-    [class.show]="showButton"
-    #scrollTopButton
-  >
-    <mat-icon>arrow_upward</mat-icon>
-  </button>
-</div>
+<router-outlet></router-outlet>
+<button
+  class="up-btn"
+  matRipple
+  [matRippleCentered]="true"
+  [class.show]="showButton"
+  #scrollTopButton
+>
+  <mat-icon>arrow_upward</mat-icon>
+</button>

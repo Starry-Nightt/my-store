@@ -4,8 +4,14 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from '@shared/shared.module';
+import { WrapperComponent } from './components/wrapper/wrapper.component';
 
-const Layouts = [HeaderComponent, MainLayoutComponent, FooterComponent];
+const Layouts = [
+  HeaderComponent,
+  MainLayoutComponent,
+  FooterComponent,
+  WrapperComponent,
+];
 
 @NgModule({
   imports: [CommonModule, SharedModule],

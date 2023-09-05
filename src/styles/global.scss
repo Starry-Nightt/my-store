@@ -138,15 +138,15 @@ h6 {
 }
 
 .normal {
-  font-weight: 500;
+  font-weight: 500 !important;
 }
 
 .semibold {
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 
 .bold {
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 
 .full-width {
@@ -257,5 +257,20 @@ $colors: (
   }
   .bg-#{$color} {
     background-color: #{$value};
+  }
+}
+
+$fontSize: (
+  "xs": 12px,
+  "sm": 14px,
+  "md": 16px,
+  "lg": 18px,
+  "xl": 20px,
+  "xxl": 24px
+);
+
+@each $size, $value in $fontSize {
+  .text-#{$size} {
+    font-size: #{$value}!important;
   }
 }

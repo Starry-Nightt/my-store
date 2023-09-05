@@ -1,1 +1,4 @@
-const BASE_API_URL = 'https://dummyjson.com';
+export enum GENDER {
+  MALE = 'male',
+  FEMALE = 'female',
+}

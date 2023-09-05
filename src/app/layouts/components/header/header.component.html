@@ -1,5 +1,19 @@
 <mat-toolbar class="header">
   <div class="container">
+    <mat-toolbar-row class="header-top">
+      <div></div>
+      <div *ngIf="user; else elseBlock" class="user flex item-center">
+        <div class="user-avatar">
+          <img [src]="user?.image" alt="" />
+        </div>
+        <span class="user-name normal">{{ user?.username }}</span>
+      </div>
+      <ng-template #elseBlock>
+        <span class="text-white normal text-sm pointer" (click)="login()"
+          >Đăng nhập
+        </span>
+      </ng-template>
+    </mat-toolbar-row>
     <mat-toolbar-row>
       <div class="brand">
         <a routerLink="/">

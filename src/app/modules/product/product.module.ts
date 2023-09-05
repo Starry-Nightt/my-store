@@ -6,9 +6,10 @@ import { SharedModule } from '@shared/shared.module';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductRatingComponent } from './components/product-rating/product-rating.component';
+import { LayoutsModule } from '@layouts/layouts.module';
 
 @NgModule({
-  imports: [CommonModule, ProductRoutingModule, SharedModule],
+  imports: [CommonModule, ProductRoutingModule, SharedModule, LayoutsModule],
   declarations: [
     ProductComponent,
     ProductListComponent,

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
 import COMPONENTS from './components';
 import { DIRECTIVES } from './directives';
+import { LayoutsModule } from '@layouts/layouts.module';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, ReactiveFormsModule],
