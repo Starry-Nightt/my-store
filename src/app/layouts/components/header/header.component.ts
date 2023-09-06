@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '@models/user.model';
+import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -10,28 +11,19 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  user: User;
-  // categories: string[] = [
-  //   'smartphones',
-  //   'laptops',
-  //   'fragrances',
-  //   'skincare',
-  //   'groceries',
-  //   'home-decoration',
-  //   'furniture',
-  //   'tops',
-  //   'womens-dresses',
-  //   'womens-shoes',
-  //   'mens-shirts',
-  // ];
+  user$ = new BehaviorSubject<User>(undefined);
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    this.user = this.authService.user;
+    this.user$ = this.authService.user$;
   }
 
   login() {
     this.router.navigate(['/login']);
+  }
+
+  logout() {
+    this.authService.logout().subscribe();
   }
 }

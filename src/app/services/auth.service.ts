@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '@models/user.model';
-import { Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 import { AppHttpClientService } from './app-http-client.service';
 
 export interface LoginData {
@@ -12,19 +12,24 @@ export interface LoginData {
   providedIn: 'root',
 })
 export class AuthService {
-  user: User;
+  user$ = new BehaviorSubject<User>(undefined);
 
   constructor(private http: AppHttpClientService) {}
 
   login(data: LoginData): Observable<User> {
     return this.http.post<User>('/auth/login', data).pipe(
       tap((res) => {
-        this.user = res;
+        this.user$.next(res);
       })
     );
   }
 
   logout(): Observable<boolean> {
-    return of(true);
+    return of(true).pipe(
+      tap((res) => {
+        if (!res) return;
+        this.user$.next(undefined);
+      })
+    );
   }
 }

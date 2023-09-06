@@ -1,6 +1,7 @@
 @import "variables";
 
 .cart {
+  margin-top: 10%;
   margin-right: 5%;
   button {
     display: block;
@@ -18,9 +19,9 @@
     }
 
     mat-icon {
-      font-size: 35px;
-      width: 35px;
-      height: 35px;
+      font-size: 25px;
+      width: 25px;
+      height: 25px;
     }
   }
 }
