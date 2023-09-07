@@ -4,6 +4,10 @@
     matRippleColor="primary"
     [matRippleCentered]="true"
     class="pointer"
+    [matBadge]="
+      (totalProducts$ | async) > 0 ? (totalProducts$ | async) : undefined
+    "
+    matBadgeColor="accent"
   >
     <mat-icon class="icon">shopping_cart</mat-icon>
   </button>

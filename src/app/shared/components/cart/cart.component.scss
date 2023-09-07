@@ -18,10 +18,14 @@
       background-color: $primary-color-500;
     }
 
-    mat-icon {
+    .icon {
       font-size: 25px;
       width: 25px;
       height: 25px;
     }
+  }
+
+  .mat-badge-content {
+    transform: translate(-25px,15px);
   }
 }

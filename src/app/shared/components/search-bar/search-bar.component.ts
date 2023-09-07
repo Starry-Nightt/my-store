@@ -31,7 +31,7 @@ export class SearchBarComponent implements OnInit {
     this.productService.searchKey$.next(this.searchCtrl.value);
   }
 
-  private filterByKey(key: string) {
+  filterByKey(key: string) {
     const _key = key.toLowerCase().trim();
     return this.hints.filter((hint) =>
       hint.toLowerCase().trim().includes(_key)

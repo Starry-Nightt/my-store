@@ -26,10 +26,7 @@
     <span class="product-stock text-dim normal">{{ getStock() }}</span>
   </mat-card-content>
   <mat-card-actions align="end">
-    <!-- <button mat--button>
-      <span class="text-primary semibold">Thêm vào giỏ hàng</span>
-    </button> -->
-    <button mat-stroked-button color="primary">
+    <button mat-stroked-button color="primary" (click)="onAddToCart()">
       Thêm vào<mat-icon>add_shopping_cart</mat-icon>
     </button>
   </mat-card-actions>

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '@models/product.model';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-item',
@@ -9,7 +10,7 @@ import { Product } from '@models/product.model';
 export class ProductItemComponent implements OnInit {
   @Input() product!: Product;
 
-  constructor() {}
+  constructor(private cartService: CartService) {}
 
   ngOnInit() {}
 
@@ -19,5 +20,9 @@ export class ProductItemComponent implements OnInit {
 
   getDiscount() {
     return Math.floor(this.product?.discountPercentage) + '%';
+  }
+
+  onAddToCart() {
+    this.cartService.addToCart({ id: this.product.id, quantity: 1 });
   }
 }

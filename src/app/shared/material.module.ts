@@ -22,6 +22,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatBadgeModule } from '@angular/material/badge';
 @NgModule({
   exports: [
     MatSlideToggleModule,
@@ -52,6 +53,7 @@ import { MatSliderModule } from '@angular/material/slider';
     MatAutocompleteModule,
     MatProgressSpinnerModule,
     MatSliderModule,
+    MatBadgeModule,
   ],
 })
 export class MaterialModule {}

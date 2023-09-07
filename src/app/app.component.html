@@ -1,10 +1,11 @@
+<div #head></div>
 <router-outlet></router-outlet>
 <button
   class="up-btn"
   matRipple
   [matRippleCentered]="true"
   [class.show]="showButton"
-  #scrollTopButton
+  (click)="onScrollToTop()"
 >
   <mat-icon>arrow_upward</mat-icon>
 </button>
