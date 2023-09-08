@@ -14,14 +14,14 @@ export interface LoginData {
 })
 export class AuthService {
   user$ = new BehaviorSubject<User>(undefined);
-  isLoggedIn: boolean = false;
+  isLoggedIn$ = new BehaviorSubject<boolean>(false);
   constructor(private http: AppHttpClientService) {}
 
   login(data: LoginData): Observable<User> {
     return this.http.post<User>('/auth/login', data).pipe(
       tap((res) => {
         this.user$.next(res);
-        this.isLoggedIn = true;
+        this.isLoggedIn$.next(true);
       })
     );
   }
@@ -31,7 +31,7 @@ export class AuthService {
       tap((res) => {
         if (!res) return;
         this.user$.next(undefined);
-        this.isLoggedIn = false;
+        this.isLoggedIn$.next(false);
       })
     );
   }

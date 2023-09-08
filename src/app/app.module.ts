@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { INTERCEPTORS } from './interceptors';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { INTERCEPTORS } from './interceptors';
     SharedModule,
     HttpClientModule,
     LayoutsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [INTERCEPTORS],
   bootstrap: [AppComponent],

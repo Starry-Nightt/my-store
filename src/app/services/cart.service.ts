@@ -1,5 +1,5 @@
 import { map, switchMap } from 'rxjs/operators';
-import { Observable, BehaviorSubject, tap, merge } from 'rxjs';
+import { Observable, BehaviorSubject, tap, merge, of } from 'rxjs';
 import { Injectable, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
 import { CartInfo } from '@models/cart-info';
@@ -22,8 +22,14 @@ export class CartService {
     this.userId = this.authService.user$.getValue()?.id;
     return this.http.get(`/carts/user/${this.userId}`).pipe(
       map((res: any) => res?.carts?.[0]),
-      tap((res) => this.cartInfo.next(res)),
-      switchMap(() => this.updateCart())
+      tap((res: CartInfo) => {
+        this.cartInfo.next(res);
+        const cartDto: CartItem[] = res?.products.map((item) => ({
+          id: item.id,
+          quantity: item.quantity,
+        }));
+        this.cartDto$.next(cartDto);
+      })
     );
   }
 
@@ -37,31 +43,39 @@ export class CartService {
       .pipe(tap((res) => this.cartInfo.next(res)));
   }
 
-  addToCart(item: CartItem) {
+  addToCart(item: CartItem): Observable<CartInfo> {
+    if (!this.authService.isLoggedIn$.getValue()) return of(undefined);
     const cartDto = this.cartDto$.getValue();
     const idx = cartDto.findIndex((_item) => _item.id === item.id);
     if (idx !== -1) cartDto[idx].quantity += item.quantity;
     else cartDto.push(item);
     this.cartDto$.next(cartDto);
-    if (this.authService.isLoggedIn) this.updateCart().subscribe();
+    return this.updateCart();
   }
 
-  removeFromCart(id: number) {
+  removeFromCart(id: number): Observable<CartInfo> {
+    if (!this.authService.isLoggedIn$.getValue()) return of(undefined);
     const cartDto = this.cartDto$.getValue();
     const idx = cartDto.findIndex((_item) => _item.id === id);
-    if (idx === -1) return;
+    if (idx === -1) return of(undefined);
     cartDto.splice(idx, 1);
     this.cartDto$.next(cartDto);
-    if (this.authService.isLoggedIn) this.updateCart().subscribe();
+    return this.updateCart();
   }
 
-  updateCartItem(item: CartItem) {
+  updateCartItem(item: CartItem): Observable<CartInfo> {
+    if (!this.authService.isLoggedIn$.getValue()) return of(undefined);
     const cartDto = this.cartDto$.getValue();
     const idx = cartDto.findIndex((_item) => _item.id === item.id);
-    if (idx === -1) return;
+    if (idx === -1) return of(undefined);
     cartDto[idx].quantity += item.quantity;
     this.cartDto$.next(cartDto);
-    if (this.authService.isLoggedIn) this.updateCart().subscribe();
+    return this.updateCart();
+  }
+
+  clearCart() {
+    this.cartDto$.next([]);
+    return of(true);
   }
 
   // createCart(data: CartItem[]): Observable<CartInfo> {
