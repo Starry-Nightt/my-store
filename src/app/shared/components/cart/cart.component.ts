@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { BehaviorSubject, Observable, combineLatest, of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,8 @@ export class CartComponent implements OnInit {
   totalProducts$ = new Observable<number>(undefined);
   constructor(
     private cartService: CartService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -29,5 +31,9 @@ export class CartComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  viewCart() {
+    this.router.navigate(['/cart']);
   }
 }

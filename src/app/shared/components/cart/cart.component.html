@@ -8,6 +8,7 @@
       (totalProducts$ | async) > 0 ? (totalProducts$ | async) : undefined
     "
     matBadgeColor="accent"
+    (click)="viewCart()"
   >
     <mat-icon class="icon">shopping_cart</mat-icon>
   </button>
