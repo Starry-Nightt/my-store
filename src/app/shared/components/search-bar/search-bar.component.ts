@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -18,7 +19,7 @@ export class SearchBarComponent implements OnInit {
   @ViewChild('searchbar', { static: true })
   searchBar: ElementRef<HTMLDivElement>;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit() {
     this.filteredHints = this.searchCtrl.valueChanges.pipe(
@@ -29,6 +30,9 @@ export class SearchBarComponent implements OnInit {
 
   onSearch() {
     this.productService.searchKey$.next(this.searchCtrl.value);
+    if (this.router.url !== '/product') {
+      this.router.navigate(['/product']);
+    }
   }
 
   filterByKey(key: string) {
