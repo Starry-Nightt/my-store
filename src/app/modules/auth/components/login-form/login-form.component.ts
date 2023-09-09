@@ -30,7 +30,9 @@ export class LoginFormComponent implements OnInit {
       password: this.form.get('password').value,
     };
     this.authService.login(loginDetail).subscribe(() => {
-      this.router.navigate(['/product']);
+      let from = localStorage.getItem('from');
+      from = from ? JSON.parse(from) : '/product';
+      this.router.navigate([from]);
     });
   }
 }

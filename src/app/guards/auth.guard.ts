@@ -23,6 +23,7 @@ export class AuthGuard {
     | UrlTree {
     const isLoggedIn = this.authService.isLoggedIn$.getValue();
     if (isLoggedIn) return true;
+    localStorage.setItem('from', JSON.stringify(state.url));
     this.router.navigate(['/login']);
     return false;
   }

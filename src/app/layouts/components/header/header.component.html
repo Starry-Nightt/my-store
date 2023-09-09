@@ -1,11 +1,7 @@
-<mat-toolbar class="header">
-  <div class="container">
-    <mat-toolbar-row class="header-top">
-      <div>
-        <span class="text-white normal text-sm pointer">
-          Diễn đàn thảo luận
-        </span>
-      </div>
+<div class="header">
+  <mat-toolbar class="container">
+    <!-- <mat-toolbar-row class="header-top">
+      <div></div>
       <div
         *ngIf="user$ | async as user; else elseBlock"
         class="user flex item-center pointer"
@@ -21,7 +17,7 @@
           >Đăng nhập
         </span>
       </ng-template>
-    </mat-toolbar-row>
+    </mat-toolbar-row> -->
     <mat-toolbar-row>
       <div class="brand">
         <a routerLink="/">
@@ -35,8 +31,8 @@
         <app-cart></app-cart>
       </div>
     </mat-toolbar-row>
-  </div>
-</mat-toolbar>
+  </mat-toolbar>
+</div>
 
 <mat-menu #menu="matMenu">
   <button mat-menu-item class="menu-btn" (click)="logout()">Đăng xuất</button>

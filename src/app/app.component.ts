@@ -6,16 +6,7 @@ import {
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
-import {
-  BehaviorSubject,
-  Subject,
-  Subscription,
-  fromEvent,
-  take,
-  takeUntil,
-  tap,
-  throttleTime,
-} from 'rxjs';
+import { Subscription, fromEvent, throttleTime } from 'rxjs';
 import { ProductService } from './services/product.service';
 
 @Component({
@@ -32,6 +23,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('scrollTopButton') button: ElementRef<HTMLButtonElement>;
 
   ngOnInit(): void {
+    localStorage.clear();
     this.scrollSubscription = fromEvent(document, 'scroll')
       .pipe()
       .subscribe(() => {
@@ -41,11 +33,13 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    fromEvent(this.button.nativeElement, 'click')
-      .pipe(throttleTime(1000))
-      .subscribe(() => {
-        this.onScrollToTop();
-      });
+    if (this.button?.nativeElement) {
+      fromEvent(this.button.nativeElement, 'click')
+        .pipe(throttleTime(2000))
+        .subscribe(() => {
+          this.onScrollToTop();
+        });
+    }
   }
 
   ngOnDestroy(): void {

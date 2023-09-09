@@ -29,3 +29,13 @@
     transform: translate(-25px,15px);
   }
 }
+
+@media screen and (max-width: 576px) {
+  .mat-badge-content {
+    transform: none;
+  }
+
+  .cart {
+    margin: 0;
+  }
+}

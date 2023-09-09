@@ -6,7 +6,15 @@
     $primary-color-600,
     $primary-color-400
   );
-  padding: 0.3rem 0;
+  padding: 1rem 0;
+
+  .container {
+    background-image: linear-gradient(
+      to bottom,
+      $primary-color-600,
+      $primary-color-400
+    );
+  }
 
   &-top {
     height: auto !important;
@@ -47,14 +55,29 @@
       display: block;
       height: 100%;
       object-fit: contain;
+      transform: scale(1.5);
     }
   }
 
   .q {
-    width: 70%;
+    width: 50%;
   }
 
   .cart {
+  }
+}
+
+@media screen and (max-width: 576px) {  
+  mat-toolbar-row  {
+    padding: 0;
+  }
+  .brand {
+    display: none;
+  }
+
+  .q {
+    width: auto;
+    flex: 1;
   }
 }
 
