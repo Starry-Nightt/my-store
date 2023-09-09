@@ -16,26 +16,32 @@
   max-height: 50vh;
 }
 
-@media screen and (max-width: 1920px) {
+.md-pc {
   .product-list {
     grid-template-columns: repeat(5, 1fr);
   }
 }
 
-@media screen and (max-width: 1280px) {
+.low-pc {
   .product-list {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media screen and (max-width: 992px) {
+.tablet {
   .product-list {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media screen and (max-width: 600px) {
+.mobile {
   .product-list {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .product-list {
+    grid-template-columns: 1fr !important;
   }
 }

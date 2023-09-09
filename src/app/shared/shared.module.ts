@@ -9,6 +9,12 @@ import { LayoutsModule } from '@layouts/layouts.module';
 @NgModule({
   imports: [CommonModule, MaterialModule, ReactiveFormsModule],
   declarations: [...COMPONENTS, ...DIRECTIVES],
-  exports: [CommonModule, MaterialModule, ReactiveFormsModule, ...COMPONENTS],
+  exports: [
+    CommonModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    ...COMPONENTS,
+    ...DIRECTIVES,
+  ],
 })
 export class SharedModule {}

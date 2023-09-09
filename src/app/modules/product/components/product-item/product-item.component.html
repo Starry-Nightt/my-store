@@ -11,7 +11,7 @@
   />
   <mat-card-content>
     <h4 class="normal product-title">{{ product.title }}</h4>
-    <div class="flex">
+    <div class="flex flex-wrap">
       <ng-container
         [ngTemplateOutlet]="chip"
         [ngTemplateOutletContext]="{ content: product?.brand }"
@@ -35,6 +35,6 @@
 <ng-template #chip let-content="content">
   <div class="product-chip">
     <span *ngIf="content.length <= 14">{{ content }}</span>
-    <span *ngIf="content.length > 14">{{ content?.slice(0, 11) + "..." }}</span>
+    <span *ngIf="content.length > 14">{{ content?.slice(0, 8) + "..." }}</span>
   </div>
 </ng-template>
