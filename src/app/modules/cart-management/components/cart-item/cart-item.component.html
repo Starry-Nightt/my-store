@@ -1,7 +1,7 @@
-<mat-card class="mb-1">
+<mat-card class="mb-1" appResponsive>
   <mat-card-content>
-    <div class="flex">
-      <div class="flex flex-1 item-center">
+    <div class="flex item-content">
+      <div class="flex flex-1 item-center block-start">
         <div class="pr-1 checkbox-col">
           <mat-checkbox
             [checked]="checked"
@@ -14,7 +14,7 @@
               <div class="product-thumbnail">
                 <img [src]="product?.thumbnail" />
               </div>
-              <div class="ml-1 mt-1 half-width">
+              <div class="ml-1 mt-1 description">
                 <p class="normal text-lg">{{ product.title }}</p>
                 <p class="mt-half">
                   {{ product.description?.slice(0, 60) + "..." }}
@@ -24,7 +24,7 @@
           </ng-container>
         </div>
       </div>
-      <div class="flex flex-1 item-center">
+      <div class="flex flex-1 item-center block-end">
         <div class="price-col text-center">
           <span class="mr-1 fa text-sm text-dim">{{
             data.price | currency

@@ -28,12 +28,12 @@ export class ProductItemComponent implements OnInit {
     return Math.floor(this.product?.discountPercentage) + '%';
   }
 
-  onAddToCart() {
+  onAddToCart(event: Event) {
     this.cartService
       .addToCart({ id: this.product.id, quantity: 1 })
       .subscribe((res) => {
         if (!res) {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/auth/login']);
           return;
         }
         this.toaster.success('Thêm vào giỏ hàng thành công', '', {
@@ -42,5 +42,11 @@ export class ProductItemComponent implements OnInit {
           progressBar: true,
         });
       });
+    event.stopPropagation();
+  }
+
+  onViewDetail(event: Event) {
+    this.router.navigate([`/product/${this.product.id}`]);
+    event.stopPropagation();
   }
 }

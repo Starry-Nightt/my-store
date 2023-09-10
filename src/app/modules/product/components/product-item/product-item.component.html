@@ -1,4 +1,4 @@
-<mat-card class="product">
+<mat-card class="product" (click)="onViewDetail($event)">
   <div class="product-discount">
     <p class="text-danger number">{{ getDiscount() }}</p>
     <p class="text-white">Giảm</p>
@@ -26,7 +26,7 @@
     <span class="product-stock text-dim normal">{{ getStock() }}</span>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-stroked-button color="primary" (click)="onAddToCart()">
+    <button mat-stroked-button color="primary" (click)="onAddToCart($event)">
       Thêm vào<mat-icon>add_shopping_cart</mat-icon>
     </button>
   </mat-card-actions>

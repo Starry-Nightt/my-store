@@ -1,5 +1,5 @@
-<div *ngIf="cartInfo$ | async as cartInfo" class="pb-8">
-  <mat-card class="mb-1">
+<div *ngIf="cartInfo$ | async as cartInfo" class="pb-8" appResponsive>
+  <mat-card class="mb-1 list-header">
     <mat-card-content class="text-dim">
       <div class="flex">
         <div class="flex flex-1 item-center">
@@ -23,9 +23,11 @@
     </mat-card-content>
   </mat-card>
   <app-cart-item
-    *ngFor="let cartItem of cartInfo.products"
+    *ngFor="let cartItem of cartInfo.products; trackBy: trackId"
     [data]="cartItem"
     [(checked)]="cartCheckMap[cartItem.id]"
+    (quantityChange)="onQuantityChange($event)"
+    (remove)="onRemoveItem($event)"
   ></app-cart-item>
 
   <app-cart-invoice

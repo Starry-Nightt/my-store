@@ -291,6 +291,6 @@ $fontSize: (
 
 @each $size, $value in $fontSize {
   .text-#{$size} {
-    font-size: #{$value}!important;
+    font-size: #{$value};
   }
 }

@@ -1,7 +1,5 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { CartItemInfo } from '@models/cart-item';
-import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-cart-invoice',

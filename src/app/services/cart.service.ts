@@ -79,7 +79,7 @@ export class CartService {
     return this.updateCart();
   }
 
-  clearCart() {
+  clearCart(): Observable<CartInfo> {
     this.cartDto$.next([]);
     return this.updateCart();
   }

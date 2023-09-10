@@ -21,3 +21,9 @@
 .action-col {
     width: 20%;
 }
+
+.mobile, .tablet {
+    .list-header {
+        display: none;
+    }
+}

@@ -1,7 +1,7 @@
 import { debounceTime } from 'rxjs/operators';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { CartItemInfo } from '@models/cart-item';
+import { CartItem, CartItemInfo } from '@models/cart-item';
 import { Product } from '@models/product.model';
 import { Observable, tap } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
@@ -17,14 +17,14 @@ export class CartItemComponent implements OnInit {
   @Input() data: CartItemInfo;
   @Input() checked: boolean = false;
   @Output() checkedChange = new EventEmitter<boolean>();
+
+  @Output() quantityChange = new EventEmitter<CartItem>();
+  @Output() remove = new EventEmitter<number>();
   productInfo$: Observable<Product>;
 
   quantityCtrl = new FormControl(undefined, [Validators.required]);
   stock: number;
-  constructor(
-    private productService: ProductService,
-    private cartService: CartService
-  ) {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit() {
     this.productInfo$ = this.productService
@@ -36,12 +36,10 @@ export class CartItemComponent implements OnInit {
       if (!res) this.quantityCtrl.setValue(1, { emitEvent: false });
       if (res > this.stock)
         this.quantityCtrl.setValue(this.stock, { emitEvent: false });
-      this.cartService
-        .updateCartItem({
-          id: this.data.id,
-          quantity: this.quantityCtrl.value,
-        })
-        .subscribe();
+      this.quantityChange.emit({
+        id: this.data.id,
+        quantity: this.quantityCtrl.value,
+      });
     });
   }
 
@@ -65,7 +63,7 @@ export class CartItemComponent implements OnInit {
   }
 
   onRemove() {
-    this.cartService.removeFromCart([this.data.id]).subscribe();
+    this.remove.emit(this.data.id);
   }
 
   onChecked(event: MatCheckboxChange) {

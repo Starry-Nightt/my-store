@@ -1,15 +1,59 @@
-@import 'variables';
+@import "variables";
 
 .pay-btn {
-    padding: 1rem 2.5rem;
-    background-color: $primary-color;
-    color: $white-color;
-    outline: none;
-    font-size: 20px;
-    border: none;
-    border-radius: 0.2rem;
-    &.disabled {
-        opacity: 0.7;
-        cursor: default;
+  padding: 1rem 2.5rem;
+  background-color: $primary-color;
+  color: $white-color;
+  outline: none;
+  font-size: 20px;
+  border: none;
+  border-radius: 0.2rem;
+  &.disabled {
+    opacity: 0.7;
+    cursor: default;
+  }
+}
+
+.mobile,
+.tablet {
+  .pay-btn {
+    padding: 0.6rem 2rem;
+    font-size: 18px;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+  .block-start,
+  .block-end {
+    justify-content: space-between;
+    padding: 0.5rem 0;
+  }
+}
+
+.mobile {
+    .checkbox-col {
+        padding-left: 0;
+    }
+    .block-end {
+        flex-wrap: wrap;
+    }
+    .pay-btn {
+        width: 100%;
+        font-size: 16px;
+        padding: 0.6rem 1.5rem;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    .total-text {
+        font-size: 14px;
+    }
+
+    .total {
+        margin-top: 1rem;
+        width: 100%;
+        text-align: right;
+        display: block;
     }
 }

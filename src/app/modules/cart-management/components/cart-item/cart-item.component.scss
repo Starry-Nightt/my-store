@@ -17,6 +17,10 @@
       object-fit: cover;
     }
   }
+
+  .description {
+    width: 50%;
+  }
 }
 
 .price-col {
@@ -63,4 +67,53 @@
 
 .action-col {
   width: 20%;
+}
+
+.mobile, .tablet {
+  .item-content {
+    flex-direction: column;
+    
+    .block-start {
+      padding: 1rem 0;
+    }
+
+    .block-end {
+      padding: 1rem 0;
+    }
+
+
+  }
+
+  .product-col {
+      .description {
+        width: 100%;
+      }
+  }
+}
+
+
+.mobile {
+
+  .product-thumbnail {
+    width: 50%;
+    aspect-ratio: 2/3;
+  }
+
+  .block-end {
+    flex-wrap: wrap;
+  }
+  .price-col {
+    width: 50%;
+  }
+
+  .quantity-col {
+    width: 50%;
+  }
+  .total-col {
+    display: none;
+  }
+
+  .action-col {
+    display: none;
+  }
 }

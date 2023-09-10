@@ -2,9 +2,10 @@ import { Observable, tap } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { CartInfo } from '@models/cart-info';
 import { CartService } from 'src/app/services/cart.service';
-import { CartItemInfo } from '@models/cart-item';
+import { CartItem, CartItemInfo } from '@models/cart-item';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart-list',
@@ -15,7 +16,11 @@ export class CartListComponent implements OnInit {
   cartInfo$: Observable<CartInfo>;
   cartItemMap: Record<string, CartItemInfo> = {};
   cartCheckMap: Record<string, boolean> = {};
-  constructor(private cartService: CartService, private router: Router) {}
+  constructor(
+    private cartService: CartService,
+    private router: Router,
+    private toaster: ToastrService
+  ) {}
 
   ngOnInit() {
     this.cartInfo$ = this.cartService.cartInfo.asObservable().pipe(
@@ -43,6 +48,11 @@ export class CartListComponent implements OnInit {
     this.cartService.buyInCart(ids).subscribe(() => {
       this.resetCartCheckMap();
       this.router.navigate(['/cart/payment']);
+      this.toaster.success('Order successfully !!!', undefined, {
+        timeOut: 3000,
+        disableTimeOut: false,
+        progressBar: true,
+      });
     });
   }
 
@@ -53,13 +63,36 @@ export class CartListComponent implements OnInit {
       .map((id) => Number(id));
     this.cartService.removeFromCart(ids).subscribe(() => {
       this.resetCartCheckMap();
+      ids.forEach((id) => {
+        this.removeItemFromMap(id);
+      });
     });
+  }
+
+  onQuantityChange(event: CartItem) {
+    this.cartService.updateCartItem(event).subscribe();
   }
 
   resetCartCheckMap() {
     Object.keys(this.cartCheckMap).forEach((key) => {
       this.cartCheckMap[key] = false;
     });
+  }
+
+  onRemoveItem(id: number) {
+    this.cartService.removeFromCart([id]).subscribe(() => {
+      this.resetCartCheckMap();
+      this.removeItemFromMap(id);
+    });
+  }
+
+  trackId(index: number, item: any) {
+    return item?.id;
+  }
+
+  removeItemFromMap(id: number) {
+    delete this.cartCheckMap[id];
+    delete this.cartItemMap[id];
   }
 
   get isCheckAll() {

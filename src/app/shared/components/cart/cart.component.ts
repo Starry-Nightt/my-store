@@ -26,7 +26,7 @@ export class CartComponent implements OnInit {
       .asObservable()
       .pipe(
         switchMap((res) => {
-          if (!res) return this.cartService.clearCart();
+          if (!res) return of(undefined);
           return this.cartService.getCart();
         })
       )
