@@ -69,9 +69,9 @@
   </mat-card-content>
 </mat-card>
 
-<div appResponsive>
+<div appResponsive *ngIf="relatedProduct$ | async as relatedProducts">
   <p class="text-xl normal mb-2 mt-3">Sản phẩm tương tự</p>
-  <div class="product-list" *ngIf="relatedProduct$ | async as relatedProducts">
+  <div class="product-list">
     <div *ngFor="let product of relatedProducts">
       <app-product-item [product]="product"></app-product-item>
     </div>
