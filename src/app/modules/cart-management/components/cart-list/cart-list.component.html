@@ -1,4 +1,4 @@
-<div *ngIf="cartInfo$ | async as cartInfo" class="pb-8" appResponsive>
+<div *ngIf="cartInfo$ | async as cartInfo" class="pb-4" appResponsive>
   <mat-card class="mb-1 list-header">
     <mat-card-content class="text-dim">
       <div class="flex">
@@ -31,7 +31,7 @@
   ></app-cart-item>
 
   <app-cart-invoice
-    class="mt-1"
+    class="mt-1 invoice"
     [checked]="isCheckAll"
     (checkedChange)="onCheckAll($event)"
     [totalProducts]="cartInfo.totalProducts"
