@@ -7,6 +7,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductRatingComponent } from './components/product-rating/product-rating.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductChipComponent } from './components/product-chip/product-chip.component';
 
 @NgModule({
   imports: [CommonModule, ProductRoutingModule, SharedModule],
@@ -16,6 +17,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     ProductItemComponent,
     ProductRatingComponent,
     ProductDetailComponent,
+    ProductChipComponent,
   ],
 })
 export class ProductModule {}

@@ -1,4 +1,5 @@
 <div class="rating">
+  <span class="number" *ngIf="showNumber">{{ rated }}</span>
   <div *ngFor="let item of stars">
     <ng-container
       [ngTemplateOutlet]="star"

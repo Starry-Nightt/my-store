@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductRatingComponent implements OnInit {
   @Input() rating: number;
+  @Input() showNumber: boolean = false;
   maxStar = 5;
   stars: boolean[] = [];
 
@@ -20,5 +21,9 @@ export class ProductRatingComponent implements OnInit {
     const unrated = this.maxStar - rated;
     for (let i = 0; i < rated; i++) this.stars.push(true);
     for (let i = 0; i < unrated; i++) this.stars.push(false);
+  }
+
+  get rated() {
+    return Math.floor(this.rating * 10) / 10;
   }
 }

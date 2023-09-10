@@ -12,14 +12,8 @@
   <mat-card-content>
     <h4 class="normal product-title">{{ product.title }}</h4>
     <div class="flex flex-wrap">
-      <ng-container
-        [ngTemplateOutlet]="chip"
-        [ngTemplateOutletContext]="{ content: product?.brand }"
-      ></ng-container>
-      <ng-container
-        [ngTemplateOutlet]="chip"
-        [ngTemplateOutletContext]="{ content: product?.category }"
-      ></ng-container>
+      <app-product-chip [content]="product?.brand"></app-product-chip>
+      <app-product-chip [content]="product?.category"></app-product-chip>
     </div>
     <div class="product-price text-primary">{{ product.price | currency }}</div>
     <app-product-rating [rating]="product?.rating"></app-product-rating>
@@ -31,10 +25,3 @@
     </button>
   </mat-card-actions>
 </mat-card>
-
-<ng-template #chip let-content="content">
-  <div class="product-chip">
-    <span *ngIf="content.length <= 14">{{ content }}</span>
-    <span *ngIf="content.length > 14">{{ content?.slice(0, 8) + "..." }}</span>
-  </div>
-</ng-template>

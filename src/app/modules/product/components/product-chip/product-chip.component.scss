@@ -1,0 +1,13 @@
+@import 'variables';
+
+.product-chip {
+  font-size: 12px;
+  padding: 2px 4px;
+  color: $primary-color;
+  margin-right: 6px;
+  border-radius: 2px;
+  border: 1px solid $primary-color;
+  cursor: default;
+  user-select: none;
+  font-weight: 500;
+}

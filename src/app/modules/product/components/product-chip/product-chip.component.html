@@ -1,0 +1,4 @@
+<div class="product-chip">
+  <span *ngIf="content.length <= 14">{{ content }}</span>
+  <span *ngIf="content.length > 14">{{ content?.slice(0, 8) + "..." }}</span>
+</div>
