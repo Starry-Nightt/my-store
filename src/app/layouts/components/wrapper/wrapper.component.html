@@ -1,6 +1,8 @@
 <div class="min-100vh flex flex-col">
   <app-header></app-header>
   <app-main-layout>
-    <ng-content></ng-content>
+    <div class="py-2">
+      <router-outlet></router-outlet>
+    </div>
   </app-main-layout>
 </div>

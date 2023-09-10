@@ -193,6 +193,10 @@ h6 {
   text-transform: capitalize;
 }
 
+.fa {
+  text-decoration: line-through;
+}
+
 $space-amounts: (1, 2, 3, 4, 5);
 
 @each $space in $space-amounts {

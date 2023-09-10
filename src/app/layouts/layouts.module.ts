@@ -6,12 +6,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from '@shared/shared.module';
 import { WrapperComponent } from './components/wrapper/wrapper.component';
 
-const Layouts = [
-  HeaderComponent,
-  MainLayoutComponent,
-  FooterComponent,
-  WrapperComponent,
-];
+const Layouts = [];
 
 @NgModule({
   imports: [CommonModule, SharedModule],

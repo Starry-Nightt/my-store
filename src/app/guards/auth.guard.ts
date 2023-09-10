@@ -24,7 +24,7 @@ export class AuthGuard {
     const isLoggedIn = this.authService.isLoggedIn$.getValue();
     if (isLoggedIn) return true;
     localStorage.setItem('from', JSON.stringify(state.url));
-    this.router.navigate(['/login']);
+    this.router.navigate(['/auth/login']);
     return false;
   }
 }
