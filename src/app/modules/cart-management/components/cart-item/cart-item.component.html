@@ -41,6 +41,12 @@
               <mat-icon>add</mat-icon>
             </div>
           </div>
+          <span
+            *ngIf="quantityCtrl.value === stock"
+            class="text-danger text-sm"
+          >
+            Only {{ stock }} available
+          </span>
         </div>
         <div class="text-center total-col normal">
           {{ data.discountedPrice | currency }}

@@ -16,6 +16,7 @@ export class ProductDetailComponent implements OnInit {
   images: string[] = [];
   selectedIdx: number = 0;
   relatedProduct$: Observable<Product[]>;
+  productId: number;
   constructor(
     private productService: ProductService,
     private cartService: CartService,
@@ -32,6 +33,7 @@ export class ProductDetailComponent implements OnInit {
       switchMap((id) => this.productService.getProductById(Number(id))),
       tap((res) => {
         this.images = res.images;
+        this.productId = res.id;
       })
     );
 
@@ -39,7 +41,9 @@ export class ProductDetailComponent implements OnInit {
       switchMap((res) =>
         this.productService.getProductsOfCategory(res.category)
       ),
-      map((res) => res.products)
+      map((res) =>
+        res.products.filter((product) => product.id !== this.productId)
+      )
     );
   }
 
