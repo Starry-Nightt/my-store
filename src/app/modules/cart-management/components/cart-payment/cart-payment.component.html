@@ -1,0 +1,23 @@
+<div class="flex flex-col item-center mt-3">
+  <mat-icon class="icon">check_circle_outline</mat-icon>
+  <h3 class="title normal mb-1 uppercase">Success</h3>
+  <p class="content">Your payment has been made</p>
+  <div class="flex justify-center mt-2">
+    <button
+      mat-stroked-button
+      color="primary"
+      class="mx-1 btn"
+      (click)="returnCart()"
+    >
+      Return to cart
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      class="mx-1 btn"
+      (click)="viewProduct()"
+    >
+      View other products
+    </button>
+  </div>
+</div>

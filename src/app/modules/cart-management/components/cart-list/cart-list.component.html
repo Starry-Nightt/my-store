@@ -1,10 +1,13 @@
-<div *ngIf="cartInfo$ | async as cartInfo">
+<div *ngIf="cartInfo$ | async as cartInfo" class="pb-8">
   <mat-card class="mb-1">
     <mat-card-content class="text-dim">
       <div class="flex">
         <div class="flex flex-1 item-center">
           <div class="pr-1 checkbox-col">
-            <mat-checkbox></mat-checkbox>
+            <mat-checkbox
+              (change)="onCheckAll($event)"
+              [checked]="isCheckAll"
+            ></mat-checkbox>
           </div>
           <div class="flex-1 product-col">
             <p>Tên sản phẩm</p>
@@ -22,5 +25,17 @@
   <app-cart-item
     *ngFor="let cartItem of cartInfo.products"
     [data]="cartItem"
+    [(checked)]="cartCheckMap[cartItem.id]"
   ></app-cart-item>
+
+  <app-cart-invoice
+    class="mt-1"
+    [checked]="isCheckAll"
+    (checkedChange)="onCheckAll($event)"
+    [totalProducts]="cartInfo.totalProducts"
+    [checkedQuantity]="checkedQuantity"
+    [totalPayment]="totalPayment"
+    (paid)="onPaid($event)"
+    (remove)="onRemoveSelected($event)"
+  ></app-cart-invoice>
 </div>

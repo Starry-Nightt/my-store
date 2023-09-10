@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-content>
+    <div class="flex">
+      <div class="flex flex-1 item-center">
+        <div class="pr-1 checkbox-col flex item-center">
+          <mat-checkbox
+            [checked]="checked"
+            (change)="onCheck($event)"
+          ></mat-checkbox>
+          <span>Chọn tất cả ({{ totalProducts }})</span>
+        </div>
+        <div class="flex-1 ml-2">
+          <button
+            mat-stroked-button
+            color="primary"
+            (click)="onRemove()"
+            [disabled]="!checkedQuantity"
+          >
+            Xóa
+          </button>
+        </div>
+      </div>
+      <div class="flex flex-1 item-center justify-end">
+        <p class="text-md">
+          Tổng thanh toán ({{ checkedQuantity }} sản phẩm):
+          <span class="text-xl text-primary normal ml-1">{{
+            totalPayment | currency
+          }}</span>
+        </p>
+        <button
+          matRipple
+          class="pay-btn ml-3 pointer"
+          (click)="onPaid()"
+          [disabled]="!checkedQuantity"
+          [class.disabled]="!checkedQuantity"
+        >
+          Mua hàng
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

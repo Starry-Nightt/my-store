@@ -1,0 +1,15 @@
+@import 'variables';
+
+.pay-btn {
+    padding: 1rem 2.5rem;
+    background-color: $primary-color;
+    color: $white-color;
+    outline: none;
+    font-size: 20px;
+    border: none;
+    border-radius: 0.2rem;
+    &.disabled {
+        opacity: 0.7;
+        cursor: default;
+    }
+}

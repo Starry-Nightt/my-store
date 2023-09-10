@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartManagementComponent } from './cart-management.component';
-import { CartListComponent } from './cart-list/cart-list.component';
+import { CartListComponent } from './components/cart-list/cart-list.component';
+import { CartPaymentComponent } from './components/cart-payment/cart-payment.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
       {
         path: '',
         component: CartListComponent,
+      },
+      {
+        path: 'payment',
+        component: CartPaymentComponent,
       },
     ],
   },

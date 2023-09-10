@@ -20,7 +20,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'class',
+        redirectTo: 'product',
         pathMatch: 'full',
       },
       {
@@ -39,11 +39,6 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
     ],
-  },
-  {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full',
   },
 ];
 

@@ -1,0 +1,26 @@
+@import 'variables';
+
+.icon {
+    $size: 200px;
+    width: $size;
+    height: $size;
+    font-size: $size;
+    color: $success-color;
+    margin-top: 4rem;
+}
+
+.title {
+    font-size: 40px;
+    color: $success-color;
+    letter-spacing: 0.05rem;
+}
+
+.content {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.btn {
+    font-size: 16px;
+}
+

@@ -53,13 +53,19 @@ export class CartService {
     return this.updateCart();
   }
 
-  removeFromCart(id: number): Observable<CartInfo> {
+  removeFromCart(ids: number[]): Observable<CartInfo> {
     if (!this.authService.isLoggedIn$.getValue()) return of(undefined);
     const cartDto = this.cartDto$.getValue();
-    const idx = cartDto.findIndex((_item) => _item.id === id);
-    if (idx === -1) return of(undefined);
-    cartDto.splice(idx, 1);
-    this.cartDto$.next(cartDto);
+    const updatedCartDto = cartDto.filter((item) => !ids.includes(item.id));
+    this.cartDto$.next(updatedCartDto);
+    return this.updateCart();
+  }
+
+  buyInCart(ids: number[]): Observable<CartInfo> {
+    if (!this.authService.isLoggedIn$.getValue()) return of(undefined);
+    const cartDto = this.cartDto$.getValue();
+    const updatedCartDto = cartDto.filter((item) => !ids.includes(item.id));
+    this.cartDto$.next(updatedCartDto);
     return this.updateCart();
   }
 
@@ -68,14 +74,14 @@ export class CartService {
     const cartDto = this.cartDto$.getValue();
     const idx = cartDto.findIndex((_item) => _item.id === item.id);
     if (idx === -1) return of(undefined);
-    cartDto[idx].quantity += item.quantity;
+    cartDto[idx].quantity = item.quantity;
     this.cartDto$.next(cartDto);
     return this.updateCart();
   }
 
   clearCart() {
     this.cartDto$.next([]);
-    return of(true);
+    return this.updateCart();
   }
 
   // createCart(data: CartItem[]): Observable<CartInfo> {
