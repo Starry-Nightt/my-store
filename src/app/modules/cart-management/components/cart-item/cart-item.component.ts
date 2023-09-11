@@ -1,5 +1,12 @@
 import { debounceTime } from 'rxjs/operators';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { CartItem, CartItemInfo } from '@models/cart-item';
 import { Product } from '@models/product.model';
@@ -12,6 +19,7 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
   selector: 'app-cart-item',
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartItemComponent implements OnInit {
   @Input() data: CartItemInfo;

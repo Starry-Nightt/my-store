@@ -6,8 +6,9 @@ import {
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
-import { Subscription, fromEvent, throttleTime } from 'rxjs';
+import { Observable, Subscription, fromEvent, throttleTime } from 'rxjs';
 import { ProductService } from './services/product.service';
+import { LoaderService } from './services/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -18,12 +19,16 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   title = 'my-store';
   showButton = false;
   scrollSubscription: Subscription;
+  isLoading$: Observable<boolean>;
 
   @ViewChild('head') head: ElementRef<HTMLDivElement>;
   @ViewChild('scrollTopButton') button: ElementRef<HTMLButtonElement>;
 
+  constructor(private loaderService: LoaderService) {}
+
   ngOnInit(): void {
     localStorage.clear();
+    this.isLoading$ = this.loaderService.loading$;
     this.scrollSubscription = fromEvent(document, 'scroll')
       .pipe()
       .subscribe(() => {

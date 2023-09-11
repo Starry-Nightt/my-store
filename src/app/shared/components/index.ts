@@ -5,6 +5,7 @@ import { MyFormComponent } from './my-form/my-form.component';
 import { MyNavComponent } from './my-nav/my-nav.component';
 import { MyTableComponent } from './my-table/my-table.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 const COMPONENTS = [
   MyFormComponent,
@@ -14,6 +15,7 @@ const COMPONENTS = [
   InfiniteListComponent,
   SearchBarComponent,
   CartComponent,
+  SpinnerComponent,
 ];
 
 export default COMPONENTS;

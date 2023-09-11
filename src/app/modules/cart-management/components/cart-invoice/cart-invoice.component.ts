@@ -1,10 +1,18 @@
-import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  EventEmitter,
+  Output,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-cart-invoice',
   templateUrl: './cart-invoice.component.html',
   styleUrls: ['./cart-invoice.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartInvoiceComponent implements OnInit {
   @Input() checked: boolean = false;
@@ -22,6 +30,11 @@ export class CartInvoiceComponent implements OnInit {
 
   onCheck(event: MatCheckboxChange) {
     this.checkedChange.emit(event);
+  }
+
+  get st() {
+    console.log('render');
+    return true;
   }
 
   onPaid() {

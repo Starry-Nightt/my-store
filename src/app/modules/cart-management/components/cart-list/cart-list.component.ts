@@ -1,5 +1,5 @@
 import { Observable, tap } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CartInfo } from '@models/cart-info';
 import { CartService } from 'src/app/services/cart.service';
 import { CartItem, CartItemInfo } from '@models/cart-item';
@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-cart-list',
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartListComponent implements OnInit {
   cartInfo$: Observable<CartInfo>;
@@ -21,6 +22,11 @@ export class CartListComponent implements OnInit {
     private router: Router,
     private toaster: ToastrService
   ) {}
+
+  get st() {
+    console.log('list render');
+    return true;
+  }
 
   ngOnInit() {
     this.cartInfo$ = this.cartService.cartInfo.asObservable().pipe(
