@@ -1,9 +1,12 @@
 <div appResponsive>
   <app-infinite-list (scrolled)="onHandleScroll($event)" [hasMore]="hasMore">
-    <mat-spinner *ngIf="loading" class="mx-auto spinner"></mat-spinner>
-    <ng-container *ngIf="!loading">
-      <div class="product-list" *ngIf="products.length; else elseBlock">
-        <div *ngFor="let product of products">
+    <mat-spinner *ngIf="loading$ | async" class="mx-auto spinner"></mat-spinner>
+    <ng-container *ngIf="!(loading$ | async)">
+      <div
+        class="product-list"
+        *ngIf="(products$ | async).length; else elseBlock"
+      >
+        <div *ngFor="let product of products$ | async">
           <app-product-item [product]="product"></app-product-item>
         </div>
       </div>
