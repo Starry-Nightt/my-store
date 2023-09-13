@@ -14,6 +14,7 @@
     <mat-option *ngFor="let hint of filteredHints | async" [value]="hint">
       {{ hint }}
     </mat-option>
+    <mat-option [value]="''"> Tất cả</mat-option>
   </mat-autocomplete>
   <button
     matRipple

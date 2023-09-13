@@ -101,6 +101,10 @@ export class CartListComponent implements OnInit {
     delete this.cartItemMap[id];
   }
 
+  onViewProduct() {
+    this.router.navigate(['/product']);
+  }
+
   get isCheckAll() {
     return (
       Object.keys(this.cartCheckMap).length &&

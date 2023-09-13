@@ -80,6 +80,10 @@ export class ProductListComponent implements OnInit {
     this.getProducts();
   }
 
+  onViewAll() {
+    this.productService.searchKey$.next('');
+  }
+
   get skipCtrl() {
     return this.form.get('skip');
   }

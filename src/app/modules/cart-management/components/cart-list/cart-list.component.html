@@ -1,43 +1,60 @@
 <div *ngIf="cartInfo$ | async as cartInfo" class="pb-4" appResponsive>
-  <mat-card class="mb-1 list-header">
-    <mat-card-content class="text-dim">
-      <div class="flex">
-        <div class="flex flex-1 item-center">
-          <div class="pr-1 checkbox-col">
-            <mat-checkbox
-              (change)="onCheckAll($event)"
-              [checked]="isCheckAll"
-            ></mat-checkbox>
+  <ng-container *ngIf="cartInfo.products.length; else elseBlock">
+    <mat-card class="mb-1 list-header">
+      <mat-card-content class="text-dim">
+        <div class="flex">
+          <div class="flex flex-1 item-center">
+            <div class="pr-1 checkbox-col">
+              <mat-checkbox
+                (change)="onCheckAll($event)"
+                [checked]="isCheckAll"
+              ></mat-checkbox>
+            </div>
+            <div class="flex-1 product-col">
+              <p>Tên sản phẩm</p>
+            </div>
           </div>
-          <div class="flex-1 product-col">
-            <p>Tên sản phẩm</p>
+          <div class="flex flex-1 item-center">
+            <div class="price-col text-center">Đơn giá</div>
+            <div class="quantity-col text-center">Số lượng</div>
+            <div class="total-col text-center">Số tiền</div>
+            <div class="action-col text-center">Thao tác</div>
           </div>
         </div>
-        <div class="flex flex-1 item-center">
-          <div class="price-col text-center">Đơn giá</div>
-          <div class="quantity-col text-center">Số lượng</div>
-          <div class="total-col text-center">Số tiền</div>
-          <div class="action-col text-center">Thao tác</div>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <app-cart-item
-    *ngFor="let cartItem of cartInfo.products; trackBy: trackId"
-    [data]="cartItem"
-    [(checked)]="cartCheckMap[cartItem.id]"
-    (quantityChange)="onQuantityChange($event)"
-    (remove)="onRemoveItem($event)"
-  ></app-cart-item>
+      </mat-card-content>
+    </mat-card>
+    <app-cart-item
+      *ngFor="let cartItem of cartInfo.products; trackBy: trackId"
+      [data]="cartItem"
+      [(checked)]="cartCheckMap[cartItem.id]"
+      (quantityChange)="onQuantityChange($event)"
+      (remove)="onRemoveItem($event)"
+    ></app-cart-item>
 
-  <app-cart-invoice
-    class="mt-1 invoice"
-    [checked]="isCheckAll"
-    (checkedChange)="onCheckAll($event)"
-    [totalProducts]="cartInfo.totalProducts"
-    [checkedQuantity]="checkedQuantity"
-    [totalPayment]="totalPayment"
-    (paid)="onPaid($event)"
-    (remove)="onRemoveSelected($event)"
-  ></app-cart-invoice>
+    <app-cart-invoice
+      class="mt-1 invoice"
+      [checked]="isCheckAll"
+      (checkedChange)="onCheckAll($event)"
+      [totalProducts]="cartInfo.totalProducts"
+      [checkedQuantity]="checkedQuantity"
+      [totalPayment]="totalPayment"
+      (paid)="onPaid($event)"
+      (remove)="onRemoveSelected($event)"
+    ></app-cart-invoice>
+  </ng-container>
 </div>
+
+<ng-template #elseBlock>
+  <div class="flex item-center justify-center flex-col cart-empty">
+    <img
+      src="../../../../../assets/images/cart-empty.png"
+      alt=""
+      class="not-available"
+    />
+    <p class="content">Your cart is empty</p>
+
+    <button mat-stroked-button color="primary" (click)="onViewProduct()">
+      Xem sản phẩm
+    </button>
+  </div>
+</ng-template>

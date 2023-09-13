@@ -12,12 +12,15 @@
       </div>
     </ng-container>
     <ng-template #elseBlock>
-      <div class="flex item-center justify-center">
+      <div class="flex item-center justify-center flex-col">
         <img
           src="../../../../../assets/images/not-available.png"
           alt=""
           class="not-available"
         />
+        <button mat-stroked-button color="primary" (click)="onViewAll()">
+          Xem tất cả
+        </button>
       </div>
     </ng-template>
   </app-infinite-list>

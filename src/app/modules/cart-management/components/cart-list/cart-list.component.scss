@@ -1,34 +1,53 @@
-.checkbox-col {
+@import 'variables';
 
+.checkbox-col {
 }
 
 .product-col {
-
 }
 
 .price-col {
-    width: 35%;
+  width: 35%;
 }
 
 .quantity-col {
-    width: 25%;
+  width: 25%;
 }
 
 .total-col {
-    width: 20%;
+  width: 20%;
 }
 
 .action-col {
-    width: 20%;
+  width: 20%;
 }
 
-.mobile, .tablet {
-    .list-header {
-        display: none;
-    }
+.mobile,
+.tablet {
+  .list-header {
+    display: none;
+  }
 }
 
 .invoice {
-    position: sticky;
-    bottom: 1rem;
+  position: sticky;
+  bottom: 1rem;
+}
+
+.content {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 18px;
+  color: $primary-color;
+  font-weight: 500;
+}
+
+.cart-empty {
+  img {
+    transform: translateX(-10%);
+    width: 80%;
+    max-width: 320px;
+  }
+
+
 }
